@@ -5,9 +5,7 @@
     - Sleep logentries restarter
 
 - name: Sleep logentries restarter
-  wait_for:
-    path: /var/lrun/logentries.pid
-    state: absent
+  wait_for: path=/var/run/logentries.pid state=absent
   notify: 
     - Start logentries restarter
 
