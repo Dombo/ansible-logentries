@@ -1,3 +1,14 @@
 ---
 - name: Restart logentries
-  service: name={{ logentries_service }} state=restarted daemon_reload=yes
+  service: name={{ logentries_service }} state=reloaded
+  # notify: Sleep logentries restarter
+
+# - name: Sleep logentries restarter
+#   wait_for:
+#     path: /var/lrun/logentries.pid
+#     state: absent
+#   notify: Start logentries restarter
+
+# - name: Start logentries restarter
+#   service: name={{ logentries_service }} state=started
+#   notify: Sleep logentries restarter
